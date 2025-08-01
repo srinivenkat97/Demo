@@ -2,7 +2,7 @@ name: Run Exchange Rate Script
 
 on:
   schedule:
-     - cron: '55 11 * * *'  # 5:25 PM IST
+     - cron: '0 12 * * *'  # Every day at 12:00 PM UTC = 5:30 PM IST
   # workflow_dispatch:
 
 jobs:
