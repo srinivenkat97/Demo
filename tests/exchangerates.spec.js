@@ -1,6 +1,6 @@
 const { test } = require('@playwright/test');
 const sql = require('mssql');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+// const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 test.setTimeout(120000);
 
@@ -38,26 +38,26 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
   }
 
 //   Step 2: Send to Bitrix24 CRM
-  const bitrixUrl = "https://b24-f5486q.bitrix24.in/rest/1/b154c9lmuevxrec3/crm.deal.add.json";
+  // const bitrixUrl = "https://b24-f5486q.bitrix24.in/rest/1/b154c9lmuevxrec3/crm.deal.add.json";
 
-  for (const { currency, rate } of exchangeRates) {
-    const formData = new URLSearchParams();
-    formData.append("FIELDS[TITLE]", `${currency}: ${rate}`);
-    formData.append("FIELDS[STAGE_ID]", "NEW");
+  // for (const { currency, rate } of exchangeRates) {
+  //   const formData = new URLSearchParams();
+  //   formData.append("FIELDS[TITLE]", `${currency}: ${rate}`);
+  //   formData.append("FIELDS[STAGE_ID]", "NEW");
 
-    try {
-      const response = await fetch(bitrixUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString(),
-      });
+  //   try {
+  //     const response = await fetch(bitrixUrl, {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  //       body: formData.toString(),
+  //     });
 
-      const result = await response.json();
-      console.log(`Bitrix24 response for ${currency}:`, result);
-    } catch (err) {
-      console.error(`Error sending ${currency} to Bitrix24:`, err);
-    }
-  }
+  //     const result = await response.json();
+  //     console.log(`Bitrix24 response for ${currency}:`, result);
+  //   } catch (err) {
+  //     console.error(`Error sending ${currency} to Bitrix24:`, err);
+  //   }
+  // }
 
   
   // Step 3: Insert into MS SQL Server (Azure)
