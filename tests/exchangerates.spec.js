@@ -66,7 +66,7 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
 const config = {
       user: 'chandrudemo',
       password: 'technorucs@123',
-      server: 'tcp:chandrudemo.database.windows.net',
+      server: 'chandrudemo.database.windows.net',
       port: 1433,
       database: 'fms-dart',
       options: {
