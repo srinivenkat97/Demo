@@ -15,7 +15,7 @@ jobs:
       SQL_SERVER: ${{ secrets.SQL_SERVER }}
       SQL_DATABASE: ${{ secrets.SQL_DATABASE }} 
       SQL_PORT: ${{ secrets.SQL_PORT }}
-      # BITRIX_URL: ${{ secrets.BITRIX_URL }}
+      BITRIX_URL: ${{ secrets.BITRIX_URL }}
 
     steps:
       - name: Checkout repository
@@ -34,3 +34,9 @@ jobs:
 
       - name: Run Playwright test (Chromium only)
         run: npx playwright test tests/exchangerates.spec.js
+
+      - name: Send Currency Email
+        run: node extractAndEmail.js
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
