@@ -2,8 +2,9 @@ name: Run Exchange Rate Script
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '0 3 * * *' # Every day at 3 AM UTC
+  schedule:
+    - cron: '0 11 * * *'  # Every day at 11:00 AM UTC = 4:30 PM IST
+
 
 jobs:
   run-script:
@@ -35,8 +36,4 @@ jobs:
       - name: Run Playwright test (Chromium only)
         run: npx playwright test tests/exchangerates.spec.js
 
-      - name: Send Currency Email
-        run: node extractAndEmail.js
-        env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+    

@@ -1,6 +1,6 @@
 const { test } = require('@playwright/test');
 const sql = require('mssql');
-// const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 test.setTimeout(120000);
 
@@ -8,7 +8,7 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
   // Step 1: Extract exchange rate data
   await page.goto('https://www.centralbank.ae/en/forex-eibor/exchange-rates/', {
     waitUntil: 'domcontentloaded',
-    timeout: 3000,
+    timeout: 5000,
   });
 
   const agreeButton = page.locator('button:has-text("Agree and continue")');
@@ -37,8 +37,8 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
     }
   }
 
-//   Step 2: Send to Bitrix24 CRM
-  // const bitrixUrl = "https://b24-f5486q.bitrix24.in/rest/1/b154c9lmuevxrec3/crm.deal.add.json";
+  // Step 2: Send to Bitrix24 CRM
+  // const bitrixUrl = process.env.BITRIX_URL;
 
   // for (const { currency, rate } of exchangeRates) {
   //   const formData = new URLSearchParams();
