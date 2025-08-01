@@ -1,7 +1,9 @@
-name: UAE Exchange Upload
+name: Run Exchange Rate Script
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *' # Every day at 3 AM UTC
 
 jobs:
   run-script:
@@ -12,31 +14,22 @@ jobs:
       SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
       SQL_SERVER: ${{ secrets.SQL_SERVER }}
       SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
-      BITRIX_WEBHOOK: ${{ secrets.BITRIX_WEBHOOK }}
+      BITRIX_URL: ${{ secrets.BITRIX_URL }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Google Chrome
-        run: |
-          sudo apt update
-          sudo apt install -y wget gnupg
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt update
-          sudo apt install -y google-chrome-stable
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: Install only Chromium
+        run: npx playwright install chromium
 
-      - name: Run Playwright Test
-        run: npx playwright test
+      - name: Run Playwright test (Chromium only)
+        run: npx playwright test tests/exchange-rates.spec.js --project=Chromium
