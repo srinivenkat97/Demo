@@ -38,7 +38,7 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
   }
 
 //   Step 2: Send to Bitrix24 CRM
-  const bitrixUrl = process.env.BITRIX_URL;
+  const bitrixUrl = "https://b24-f5486q.bitrix24.in/rest/1/b154c9lmuevxrec3/crm.deal.add.json";
 
   for (const { currency, rate } of exchangeRates) {
     const formData = new URLSearchParams();
