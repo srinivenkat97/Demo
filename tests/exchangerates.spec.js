@@ -61,7 +61,7 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
 
   
   // Step 3: Insert into MS SQL Server (Azure)
-
+console.log('Inserting exchange rates into SQL Server...');
 
 const config = {
       user: process.env.SQL_USER,
@@ -73,6 +73,7 @@ const config = {
         encrypt: true,
         trustServerCertificate: false,
   },
+  
 };
 
  let db;

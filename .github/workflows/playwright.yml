@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SQL_USER: ${{ secrets.SQL_USER }}
-      SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
-      SQL_SERVER: ${{ secrets.SQL_SERVER }}
-      SQL_DATABASE: ${{ secrets.SQL_DATABASE }} 
-      SQL_PORT: ${{ secrets.SQL_PORT }}
+      SQL_USER: chandrudemo
+      SQL_PASSWORD: technorucs@123
+      SQL_SERVER: chandrudemo.database.windows.net
+      SQL_DATABASE: fms-dart
+      SQL_PORT: 1433
       # BITRIX_URL: ${{ secrets.BITRIX_URL }}
 
     steps:
