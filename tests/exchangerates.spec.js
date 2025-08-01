@@ -64,11 +64,11 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
 
 
 const config = {
-      user: 'chandrudemo',
-      password: 'technorucs@123',
-      server: 'chandrudemo.database.windows.net',
+      user: process.env.SQL_USER,
+      password: process.env.SQL_PASSWORD,
+      server: process.env.SQL_SERVER,
       port: 1433,
-      database: 'fms-dart',
+      database: process.env.SQL_DATABASE,
       options: {
         encrypt: true,
         trustServerCertificate: false,
