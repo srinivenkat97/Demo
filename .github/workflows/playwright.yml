@@ -2,7 +2,7 @@ name: Run Exchange Rate Script
 
 on:
   schedule:
-    - cron: '37 11 * * *'  # Every day at 11:37 AM UTC = 5:07 PM IST
+     - cron: '40 11 * * *'  # Every day at 11:40 AM UTC = 5:10 PM IST
 
 
 jobs:
