@@ -32,4 +32,4 @@ jobs:
         run: npx playwright install chromium
 
       - name: Run Playwright test (Chromium only)
-        run: npx playwright test tests/exchange-rates.spec.js --project=Chromium
+        run: npx playwright test exchange-rates.spec.js
