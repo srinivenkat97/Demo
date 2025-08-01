@@ -64,20 +64,21 @@ test('Extract Exchange Rates and Send to Bitrix24 and Oracle DB', async ({ page 
 
 
 const config = {
-    user: process.env.SQL_USER,
-    password: process.env.SQL_PASSWORD,
-    server: process.env.SQL_SERVER,
-    port: 1433,
-    database: process.env.SQL_DATABASE,
-    options: {
-      encrypt: true,
-      trustServerCertificate: false,
+      user: 'chandrudemo',
+      password: 'technorucs@123',
+      server: 'tcp:chandrudemo.database.windows.net',
+      port: 1433,
+      database: 'fms-dart',
+      options: {
+        encrypt: true,
+        trustServerCertificate: false,
   },
 };
 
  let db;
   try {
     db = await sql.connect(config);
+    console.log('Connected to SQL Server');
     for (const { currency, rate } of exchangeRates) {
       await db.request()
         .input('currency', sql.VarChar, currency)
