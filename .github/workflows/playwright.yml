@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SQL_USER: ${{ secrets.env.SQL_USER }}
-      SQL_PASSWORD: ${{ secrets.env.SQL_PASSWORD }}
-      SQL_SERVER: ${{ secrets.env.SQL_SERVER }}
-      SQL_DATABASE: ${{ secrets.env.SQL_DATABASE }} 
-      SQL_PORT: ${{ secrets.env.SQL_PORT }}
-      # BITRIX_URL: ${{ secrets.env.BITRIX_URL }}
+      SQL_USER: ${{ secrets.SQL_USER }}
+      SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+      SQL_SERVER: ${{ secrets.SQL_SERVER }}
+      SQL_DATABASE: ${{ secrets.SQL_DATABASE }} 
+      SQL_PORT: ${{ secrets.SQL_PORT }}
+      # BITRIX_URL: ${{ secrets.BITRIX_URL }}
 
     steps:
       - name: Checkout repository
